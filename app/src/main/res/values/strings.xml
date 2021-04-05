@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">IMoodMeter</string>
+    <string name="hello_world">Hello World, Edward was here!</string>
 </resources>
