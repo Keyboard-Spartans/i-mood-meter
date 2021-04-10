@@ -34,13 +34,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="How do you feel today?"
+        android:text="Here's how you feel today:"
         android:textSize="50dp" />
 
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:progress="60"
         />
 
     <LinearLayout
@@ -69,9 +70,17 @@
 
 
     <Button
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Record Mood"
+        android:textAllCaps="false"
+        android:text="Add Another"
+        android:layout_gravity="center"/>
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textAllCaps="false"
+        android:text="Edit"
         android:layout_gravity="center"/>
 </LinearLayout>

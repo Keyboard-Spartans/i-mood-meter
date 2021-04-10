@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="25dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="A short description of your mood:"
+        android:textSize="40dp"/>
+
+
+
+    <EditText
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:inputType="text"
+        android:text="What's on your mind?"
+        android:textColor="#70000000"
+        android:gravity="top">
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textAllCaps="false"
+        android:text="Save Comment"
+        />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textAllCaps="false"
+        android:text="Skip"
+        />
+
+</LinearLayout>
