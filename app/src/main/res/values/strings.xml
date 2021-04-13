@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IMoodMeter</string>
+    <string name="title">Title</string>
+    <string name="description">Write a description here</string>
+    <string name="upload_button">Upload Media</string>
+    <string name="save_button">Save</string>
 </resources>
