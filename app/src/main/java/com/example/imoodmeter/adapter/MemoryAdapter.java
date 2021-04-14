@@ -1,5 +1,6 @@
 package com.example.imoodmeter.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imoodmeter.R;
+import com.example.imoodmeter.ViewSingleMemoryActivity;
 import com.example.imoodmeter.controller.MemoryController;
 import com.example.imoodmeter.model.MemoryModel;
 
 public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder> {
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final TextView titleView;
         public final TextView descriptionView;
 
-        public ViewHolder(View view) {
-            super(view);
+        public ViewHolder(View v) {
+            super(v);
 
-            titleView = view.findViewById(R.id.title);
-            descriptionView = view.findViewById(R.id.description);
+            titleView = v.findViewById(R.id.title);
+            descriptionView = v.findViewById(R.id.description);
+
+            v.setOnClickListener(this);
         }
 
         public void setTitle(String title) {
@@ -30,6 +34,13 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder
 
         public void setDescription(String description) {
             descriptionView.setText(description);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), ViewSingleMemoryActivity.class);
+            intent.putExtra("position", getAdapterPosition());
+            v.getContext().startActivity(intent);
         }
     }
 
