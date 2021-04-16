@@ -14,7 +14,14 @@ import com.example.imoodmeter.ViewSingleMemoryActivity;
 import com.example.imoodmeter.controller.MemoryController;
 import com.example.imoodmeter.model.MemoryModel;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder> {
+    List<MemoryModel> memories = MemoryController.getMemories();
+
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final TextView titleView;
         public final TextView descriptionView;
@@ -55,13 +62,32 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        MemoryModel memory = MemoryController.getMemories().get(position);
+        MemoryModel memory = memories.get(position);
         viewHolder.setTitle(memory.getTitle());
         viewHolder.setDescription(memory.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return MemoryController.getMemories().size();
+        return memories.size();
+    }
+
+    public void filter(String keyword) {
+        Pattern pattern = Pattern.compile(Pattern.quote(keyword), Pattern.CASE_INSENSITIVE);
+        memories = new ArrayList<>();
+
+        for (MemoryModel memory : MemoryController.getMemories()) {
+            if (pattern.matcher(memory.getTitle()).find()
+                    || pattern.matcher(memory.getDescription()).find()) {
+                memories.add(memory);
+            }
+        }
+
+        notifyDataSetChanged();
+    }
+
+    public void reset() {
+        memories = MemoryController.getMemories();
+        notifyDataSetChanged();
     }
 }

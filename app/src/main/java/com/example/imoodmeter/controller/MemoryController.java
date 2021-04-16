@@ -20,7 +20,7 @@ public class MemoryController {
 
     public static void addMemory(MemoryModel memory) {
         initialize();
-        singletonController.memories.add(memory);
+        singletonController.memories.add(0, memory);
     }
 
     private static void initialize() {
