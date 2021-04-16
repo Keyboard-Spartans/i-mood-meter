@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/memories_page"
+        android:enabled="true"
+        android:icon="@drawable/memories_page_icon"
+        android:title="@string/memories_page_title"/>
+
+    <item
+        android:id="@+id/record_page"
+        android:enabled="true"
+        android:icon="@drawable/record_page_icon"
+        android:title="@string/record_page_title"/>
+
+    <item
+        android:id="@+id/summary_page"
+        android:enabled="true"
+        android:icon="@drawable/summary_page_icon"
+        android:title="@string/summary_page_title"/>
+</menu>

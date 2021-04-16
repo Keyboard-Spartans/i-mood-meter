@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">IMoodMeter</string>
+    <string name="memories_page_title">Memories</string>
+    <string name="record_page_title">Mood</string>
+    <string name="summary_page_title">Summary</string>
     <string name="title">Title</string>
     <string name="description">Write a description here</string>
     <string name="upload_button">Upload Media</string>
