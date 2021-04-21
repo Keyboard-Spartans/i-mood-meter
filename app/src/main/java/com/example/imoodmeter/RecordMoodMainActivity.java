@@ -5,18 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.imoodmeter.utils.moodMeterUtils;
 import com.google.android.material.slider.LabelFormatter;
-import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.slider.Slider;
 
-import java.util.Locale;
 
 public class RecordMoodMainActivity extends AppCompatActivity implements View.OnClickListener{
-
+    moodMeterUtils moodUtils = new moodMeterUtils();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,7 @@ public class RecordMoodMainActivity extends AppCompatActivity implements View.On
             @NonNull
             @Override
             public String getFormattedValue(float value) {
-                return floatToMoodConverter(value);
+                return moodUtils.floatToMoodConverter(value);
             }
         });
 
@@ -45,27 +44,11 @@ public class RecordMoodMainActivity extends AppCompatActivity implements View.On
             Slider slider = findViewById(R.id.mood_value);
             float moodVal = slider.getValue();
 
+            Log.w("MAIN_ACT", "moodVal: " + moodVal);
+
             Intent intent = new Intent(this, RecordMoodAddComment.class);
             intent.putExtra("moodValue", moodVal);
             startActivity(intent);
         }
-    }
-
-    private String floatToMoodConverter(float value) {
-        switch ((int)value){
-            case 0:
-                return "Angry";
-            case 1:
-                return "Sad";
-            case 2:
-                return "Neutral";
-            case 3:
-                return "Content";
-            case 4:
-                return "Happy";
-            case 5:
-                return "Excited";
-        }
-        return "INVALID";
     }
 }

@@ -1,7 +1,11 @@
 package com.example.imoodmeter.model;
 
-import java.time.LocalDate;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MoodModel {
     private final int moodValue;
@@ -12,6 +16,14 @@ public class MoodModel {
         moodValue = mood_value;
         moodDescription = mood_description;
         moodTimeRecorded = mood_time_recorded;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public String print(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = moodTimeRecorded.format(formatter);
+
+        return String.format("Mood Entry: %d %s %s",moodValue, moodDescription, formattedDateTime);
     }
 
     public int getMoodValue() { return moodValue; }

@@ -12,21 +12,20 @@
         android:layout_marginHorizontal="20dp">
 
         <TextView
-            android:id="@+id/text_show_mood"
+            android:id="@+id/text_mood_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="A short description of your mood:"
             android:textSize="40dp"/>
 
 
 
         <EditText
+            android:id="@+id/mood_description_edit"
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:inputType="text"
-            android:hint="What's on your mind?"
             android:textColor="#70000000"
             android:gravity="top">
 
