@@ -3,10 +3,12 @@ package com.example.imoodmeter;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,8 @@ import android.widget.TextView;
 import com.example.imoodmeter.controller.MemoryController;
 import com.example.imoodmeter.model.MemoryModel;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.time.LocalDateTime;
 
 public class AddMemoryActivity extends AppCompatActivity implements View.OnClickListener {
     private TextInputLayout titleView;
@@ -61,12 +65,13 @@ public class AddMemoryActivity extends AppCompatActivity implements View.OnClick
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.save_button) {
             String title = titleView.getEditText().getText().toString();
             String description = descriptionView.getEditText().getText().toString();
-            MemoryController.addMemory(new MemoryModel(title, description, imageUri));
+            MemoryController.addMemory(new MemoryModel(title, description, imageUri, LocalDateTime.now()));
             finish();
         } else if (v.getId() == R.id.upload_button) {
             getContentLauncher.launch(new String[]{"image/*"});
