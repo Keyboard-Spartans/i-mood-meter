@@ -11,6 +11,16 @@
         android:orientation="vertical"
         android:gravity="center">
 
+        <Button
+            android:id="@+id/close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            app:icon="@drawable/close_icon"
+            app:iconSize="24dp"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -45,6 +55,32 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:id="@+id/selected_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="@string/image_selected"
+                android:layout_margin="10dp"
+            />
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:maxWidth="30dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"/>
+        </LinearLayout>
+
         <Button
             android:id="@+id/upload_button"
             android:layout_width="wrap_content"
@@ -60,7 +96,7 @@
             android:id="@+id/save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/save_button"
             android:textSize="24sp"/>
     </LinearLayout>

@@ -8,7 +8,9 @@
     <string name="title">Title</string>
     <string name="description">Write a description here</string>
     <string name="upload_button">Upload Media</string>
+    <string name="reselect">Reselect</string>
     <string name="save_button">Save</string>
     <string name="add_memory_button_hint">Add memory</string>
     <string name="memory_screen_title">Memories</string>
+    <string name="image_selected">Image selected:</string>
 </resources>
