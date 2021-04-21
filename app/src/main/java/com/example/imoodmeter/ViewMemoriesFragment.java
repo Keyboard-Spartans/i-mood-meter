@@ -1,45 +1,50 @@
 package com.example.imoodmeter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.appcompat.widget.SearchView;
 
 import com.example.imoodmeter.adapter.MemoryAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class ViewMemoriesActivity extends AppCompatActivity implements View.OnClickListener, SearchView.OnQueryTextListener {
+public class ViewMemoriesFragment extends Fragment implements View.OnClickListener, SearchView.OnQueryTextListener {
     MemoryAdapter mMemoriesAdapter = new MemoryAdapter();
     SearchView searchView;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_memories);
+    public ViewMemoriesFragment() {
+        super(R.layout.view_memories);
+    }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         // Put the memories in the recycler view
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(mMemoriesAdapter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         // Link to add memory screen
-        FloatingActionButton addButton = findViewById(R.id.add_button);
+        FloatingActionButton addButton = view.findViewById(R.id.add_button);
         addButton.setOnClickListener(this);
 
         // Enable search
-        searchView = findViewById(R.id.search_bar);
+        searchView = view.findViewById(R.id.search_bar);
         searchView.setOnQueryTextListener(this);
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    public void onResume() {
+        super.onResume();
         mMemoriesAdapter.reset();
         searchView.setQuery("", false);
     }
@@ -47,7 +52,7 @@ public class ViewMemoriesActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.add_button) {
-            Intent intent = new Intent(this, AddMemoryActivity.class);
+            Intent intent = new Intent(this.getContext(), AddMemoryActivity.class);
             startActivity(intent);
         }
     }

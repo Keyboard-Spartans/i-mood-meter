@@ -16,15 +16,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.fragment_container_view, BlankFragment.class, null) // TODO: replace blank fragment with landing screen fragment
-                    .commit();
-        }
-
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(this);
+
+        // Landing page is record mood page
+        bottomNavigation.setSelectedItemId(R.id.record_page);
     }
 
     @Override
@@ -36,14 +32,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else if (item.getItemId() == R.id.summary_page) {
             fragmentClass = BlankFragment.class; // TODO: replace with summary page fragment
         } else if (item.getItemId() == R.id.memories_page) {
-            fragmentClass = BlankFragment.class; // TODO: replace with memory page fragment
+            fragmentClass = ViewMemoriesFragment.class;
         } else {
             return false;
         }
 
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
-                .add(R.id.fragment_container_view, fragmentClass, null)
+                .replace(R.id.fragment_container_view, fragmentClass, null)
                 .commit();
         return true;
     }
