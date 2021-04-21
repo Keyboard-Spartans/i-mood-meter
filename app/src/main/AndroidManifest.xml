@@ -9,22 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMoodMeter">
-
-        <!-- ACTIVITY FOR RECORDING-->
+        <activity android:name=".RecordMoodRecorded"></activity>
+        <activity android:name=".RecordMoodAddComment" /> <!-- ACTIVITY FOR RECORDING -->
         <activity android:name=".RecordMoodMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- ACTIVITY FOR MEMORY-->
+        </activity> <!-- ACTIVITY FOR MEMORY -->
         <activity android:name=".AddMemoryActivity" />
         <activity android:name=".ViewSingleMemoryActivity" />
-        <activity android:name=".ViewMemoriesActivity" />
-
-        <!-- ACTIVITY FOR TRACKING-->
+        <activity android:name=".ViewMemoriesActivity" /> <!-- ACTIVITY FOR TRACKING -->
         <activity android:name=".MainActivity" />
     </application>
 

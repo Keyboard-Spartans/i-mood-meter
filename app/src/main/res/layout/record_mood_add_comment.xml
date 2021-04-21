@@ -33,6 +33,7 @@
         </EditText>
 
         <Button
+            android:id="@+id/save_comment"
             android:layout_marginTop="35dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -41,6 +42,7 @@
             />
 
         <Button
+            android:id="@+id/skip_comment"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="60dp"
