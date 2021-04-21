@@ -33,7 +33,7 @@ public class AddMemoryActivity extends AppCompatActivity implements View.OnClick
         if (v.getId() == R.id.save_button) {
             String title = titleView.getEditText().getText().toString();
             String description = descriptionView.getEditText().getText().toString();
-            MemoryController.addMemory(new MemoryModel(title, description));
+            MemoryController.addMemory(new MemoryModel(title, description, null));
             finish();
         }
     }

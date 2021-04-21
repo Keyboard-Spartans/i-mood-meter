@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.imoodmeter.controller.MemoryController;
@@ -20,11 +21,13 @@ public class ViewSingleMemoryActivity extends AppCompatActivity implements View.
 
         TextView titleView = findViewById(R.id.title);
         TextView descriptionView = findViewById(R.id.description);
+        ImageView imageView = findViewById(R.id.image);
 
         Intent intent = getIntent();
         MemoryModel memory = MemoryController.getMemories().get(intent.getIntExtra("position", 0));
         titleView.setText(memory.getTitle());
         descriptionView.setText(memory.getDescription());
+        imageView.setImageURI(memory.getImageUri());
 
         Button closeButton = findViewById(R.id.close_button);
         closeButton.setOnClickListener(this);

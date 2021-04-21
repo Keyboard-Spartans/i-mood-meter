@@ -1,5 +1,8 @@
 package com.example.imoodmeter.controller;
 
+import android.net.Uri;
+
+import com.example.imoodmeter.R;
 import com.example.imoodmeter.model.MemoryModel;
 
 import java.util.ArrayList;
@@ -31,8 +34,9 @@ public class MemoryController {
         singletonController = new MemoryController();
 
         // Add some dummy data
-        singletonController.memories.add(new MemoryModel("Hello world 1", "Lorem ipsum dolor"));
-        singletonController.memories.add(new MemoryModel("Hello world 2", "Some other description"));
-        singletonController.memories.add(new MemoryModel("Hello world 3", "This marks the last!"));
+        Uri defaultUri = Uri.parse("android.resource://com.example.imoodmeter/" + R.drawable.upload_icon);
+        singletonController.memories.add(new MemoryModel("Hello world 1", "Lorem ipsum dolor", defaultUri));
+        singletonController.memories.add(new MemoryModel("Hello world 2", "Some other description", defaultUri));
+        singletonController.memories.add(new MemoryModel("Hello world 3", "This marks the last!", defaultUri));
     }
 }

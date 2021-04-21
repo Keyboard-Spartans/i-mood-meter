@@ -22,6 +22,7 @@
             />
 
         <ImageView
+            android:id="@+id/image"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:srcCompat="@drawable/upload_icon"
