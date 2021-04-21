@@ -3,6 +3,8 @@
     <string name="memories_page_title">Memories</string>
     <string name="record_page_title">Mood</string>
     <string name="summary_page_title">Summary</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title">Title</string>
     <string name="description">Write a description here</string>
     <string name="upload_button">Upload Media</string>
