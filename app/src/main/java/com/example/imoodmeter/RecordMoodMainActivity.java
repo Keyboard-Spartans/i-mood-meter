@@ -41,7 +41,12 @@ public class RecordMoodMainActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
         // do something in response to button click
         if (view.getId() == R.id.record_button) {
+            // store the value of slider
+            Slider slider = findViewById(R.id.mood_value);
+            float moodVal = slider.getValue();
+
             Intent intent = new Intent(this, RecordMoodAddComment.class);
+            intent.putExtra("moodValue", moodVal);
             startActivity(intent);
         }
     }

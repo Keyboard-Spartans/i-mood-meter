@@ -19,6 +19,15 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
 
         Button skipCommentButton = (Button) findViewById(R.id.skip_comment);
         skipCommentButton.setOnClickListener(this);
+
+        // get previously added moodVal
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            float moodVal = extras.getFloat("moodVal");
+        }
+
+
+
     }
 
     @Override
