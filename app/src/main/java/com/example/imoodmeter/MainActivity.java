@@ -8,7 +8,18 @@ import android.os.Bundle;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+//import android.graphics.Color;
+//import com.github.mikephil.charting.charts.LineChart;
+//import com.github.mikephil.charting.data.Entry;
+//import com.github.mikephil.charting.data.LineData;
+//import com.github.mikephil.charting.data.LineDataSet;
+//import com.github.mikephil.charting.utils.ColorTemplate;
+//import java.util.ArrayList;
+
+
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
+
+
 
 
 }
