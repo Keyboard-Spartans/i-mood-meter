@@ -11,9 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMoodMeter">
+        <activity android:name=".RecordMoodRecorded"/>
+        <activity android:name=".RecordMoodAddComment" /> <!-- ACTIVITY FOR RECORDING -->
+        <activity android:name=".RecordMoodMainActivity"/>
+
+        <!-- ACTIVITY FOR MEMORY -->
         <activity android:name=".AddMemoryActivity" />
         <activity android:name=".ViewSingleMemoryActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ViewMemoriesActivity" /> <!-- ACTIVITY FOR TRACKING -->
+        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

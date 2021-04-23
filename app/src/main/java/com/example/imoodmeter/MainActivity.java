@@ -28,9 +28,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Class<? extends androidx.fragment.app.Fragment> fragmentClass;
 
         if (item.getItemId() == R.id.record_page) {
-            fragmentClass = BlankFragment.class; // TODO: replace with record page fragment
+            Bundle extras = getIntent().getExtras();
+            if(extras != null) {
+                boolean moodRecorded = extras.getBoolean("moodRecorded");
+                if (moodRecorded == true) {
+                    fragmentClass = RecordMoodRecordedFragment.class;
+                } else {
+                    fragmentClass = RecordMoodMainFragment.class;
+                }
+            } else{
+                fragmentClass = RecordMoodMainFragment.class; // TODO: replace with record page fragment, add logic to go to recorded layout when done
+            }
+
         } else if (item.getItemId() == R.id.summary_page) {
-            fragmentClass = BlankFragment.class; // TODO: replace with summary page fragment
+            fragmentClass = SummaryActivityFragment.class; // TODO: replace with summary page fragment
         } else if (item.getItemId() == R.id.memories_page) {
             fragmentClass = ViewMemoriesFragment.class;
         } else {
