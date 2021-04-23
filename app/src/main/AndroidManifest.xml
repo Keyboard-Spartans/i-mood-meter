@@ -19,7 +19,7 @@
         <activity android:name=".AddMemoryActivity" />
         <activity android:name=".ViewSingleMemoryActivity" />
         <activity android:name=".ViewMemoriesActivity" /> <!-- ACTIVITY FOR TRACKING -->
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
