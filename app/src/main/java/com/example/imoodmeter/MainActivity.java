@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
 
         } else if (item.getItemId() == R.id.summary_page) {
-            fragmentClass = BlankFragment.class; // TODO: replace with summary page fragment
+            fragmentClass = SummaryActivityFragment.class; // TODO: replace with summary page fragment
         } else if (item.getItemId() == R.id.memories_page) {
             fragmentClass = ViewMemoriesFragment.class;
         } else {
