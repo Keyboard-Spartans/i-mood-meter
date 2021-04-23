@@ -20,6 +20,10 @@ public class MoodController {
 
     private MoodController() {}
 
+    public static int getMoodsSize() {
+        return singletonController.moods.size();
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static List<MoodModel> getMoods() {
         initialize();

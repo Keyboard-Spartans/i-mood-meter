@@ -85,8 +85,9 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
 
             MoodController.printMoods();
 
-            Intent intent = new Intent(this, RecordMoodRecorded.class);
+            Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("moodValue", moodVal);
+            intent.putExtra("moodRecorded", true);
             startActivity(intent);
         }
     }

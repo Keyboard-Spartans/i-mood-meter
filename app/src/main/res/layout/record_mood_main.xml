@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="How do you feel today?"
-            android:textSize="50dp" />
+            android:textSize="40dp" />
 
         <com.google.android.material.slider.Slider
             android:id="@+id/mood_value"
@@ -79,7 +79,7 @@
 
         <Button
             android:id="@+id/record_button"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="Record Mood"
