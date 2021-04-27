@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.imoodmeter.controller.MoodController;
 import com.example.imoodmeter.model.MoodModel;
 import com.example.imoodmeter.utils.moodMeterUtils;
+import com.google.android.material.textfield.TextInputEditText;
 
 import android.content.Intent;
 import android.os.Build;
@@ -26,10 +27,10 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.record_mood_add_comment);
 
-        Button saveCommentButton = (Button) findViewById(R.id.save_comment);
+        Button saveCommentButton = findViewById(R.id.save_comment);
         saveCommentButton.setOnClickListener(this);
 
-        Button skipCommentButton = (Button) findViewById(R.id.skip_comment);
+        Button skipCommentButton = findViewById(R.id.skip_comment);
         skipCommentButton.setOnClickListener(this);
 
         // get previously added moodVal
@@ -42,8 +43,8 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
             TextView textMoodQuestion = findViewById(R.id.text_mood_question);
             textMoodQuestion.setText(moodCommentQuestion);
 
-            EditText moodDescriptionEdit = findViewById(R.id.mood_description_edit);
-            moodDescriptionEdit.setHint(moodEditHint);
+//            TextInputEditText moodDescriptionEdit = findViewById(R.id.mood_description_edit);
+//            moodDescriptionEdit.setHint(moodEditHint);
         }
 
 
@@ -58,7 +59,7 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
 
         MoodModel moodToAdd;
         if (saveComment) {
-            EditText moodDescriptionEdit = findViewById(R.id.mood_description_edit);
+            TextInputEditText moodDescriptionEdit = findViewById(R.id.mood_description_edit);
             String moodDesc = moodDescriptionEdit.getText().toString();
 
             moodToAdd = new MoodModel((int) moodVal, moodDesc, timeStamp);
