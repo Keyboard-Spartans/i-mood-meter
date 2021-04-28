@@ -2,7 +2,9 @@ package com.example.imoodmeter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +16,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // This segment is to remove title bar
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
+
+
+        // This segment is to change status bar color to our main theme color
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.mainThemeColor)); //status bar or the time bar at the top
+        }
+
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);

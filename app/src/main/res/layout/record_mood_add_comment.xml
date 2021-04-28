@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +15,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:textSize="40dp"/>
+            android:textSize="40dp"
+            android:textColor="@color/black"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="40dp"
@@ -23,6 +25,9 @@
             android:layout_height="wrap_content"
             android:hint="Description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            app:boxStrokeColor="@color/tickColorActive"
+            app:hintTextColor="@color/mainThemeColor"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -31,6 +36,7 @@
                 android:layout_height="170dp"
                 android:gravity="top"
                 android:inputType="text"
+
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +58,11 @@
             android:layout_height="60dp"
             android:textAllCaps="false"
             android:text="Skip"
+            android:textColor="@color/mainThemeColor"
             style="?attr/materialButtonOutlinedStyle"
+
+            app:cornerRadius="50dp"
+            app:rippleColor="@color/sliderTrackColorShade"
             />
 
         <Button
@@ -62,6 +72,9 @@
             android:layout_height="60dp"
             android:textAllCaps="false"
             android:text="Save Comment"
+
+            app:cornerRadius="50dp"
+            app:backgroundTint="@color/mainThemeColor"
             />
 
     </LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,14 @@ public class RecordMoodMainFragment extends Fragment implements View.OnClickList
             @Override
             public String getFormattedValue(float value) {
                 return moodUtils.floatToMoodConverter(value);
+            }
+        });
+
+        slider.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                Button recordButton = view.findViewById(R.id.record_button);
+                recordButton.setText(moodUtils.floatToRecordButtonConverter(value));
             }
         });
 
