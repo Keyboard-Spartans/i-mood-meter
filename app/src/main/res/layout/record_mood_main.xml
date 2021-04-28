@@ -2,9 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#f4f3ee"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,11 +15,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="40dp">
-
+            <!--
             <Button
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:text="KEY"/>
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KEY"
+                android:textColor="@color/mainThemeColor" />
+                -->
 
             <View
                 android:layout_width="0dp"
@@ -28,28 +30,44 @@
                 android:layout_weight="1" />
 
             <Button
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:text="?"/>
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="!"
+
+                app:cornerRadius="30dp"
+                app:rippleColor="@color/sliderTrackColorShade"
+
+                android:textColor="@color/mainThemeColor" />
 
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="70dp"
             android:text="How do you feel today?"
-            android:textSize="40dp" />
+            android:textColor="@color/black"
+            android:textSize="50dp" />
 
         <com.google.android.material.slider.Slider
             android:id="@+id/mood_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:valueFrom="0.0"
-            android:valueTo="5.0"
             android:stepSize="1.0"
             android:value="3.0"
+            android:valueFrom="0.0"
+            android:valueTo="5.0"
+            app:thumbColor="@color/mainThemeColor"
+            app:haloColor="@color/sliderTrackColorShade"
+
+            app:trackColorActive="@color/sliderTrackColor"
+            app:trackColorInactive="@color/sliderTrackColorShade"
+            app:trackHeight="10dp"
+
+            app:tickColorActive="@color/tickColorActive"
+            app:tickColorInactive="@color/tickColorInactive"
             />
 
         <LinearLayout
@@ -60,7 +78,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="---"
+                android:text=":("
+                android:textColor="@color/mainThemeColor"
                 android:textSize="30dp"/>
 
             <View
@@ -71,7 +90,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+++"
+                android:text=":D"
+                android:textColor="@color/mainThemeColor"
                 android:textSize="30dp"/>
 
         </LinearLayout>
@@ -79,10 +99,17 @@
 
         <Button
             android:id="@+id/record_button"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+
             android:text="Record Mood"
+            android:textAllCaps="false"
+            android:textSize="20dp"
+
+
+            app:backgroundTint="@color/mainThemeColor"
+            app:cornerRadius="50dp"
             android:layout_gravity="center"/>
 
     </LinearLayout>
