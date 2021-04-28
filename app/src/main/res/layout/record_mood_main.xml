@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +20,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?attr/materialButtonOutlinedStyle"
-                android:text="KEY"/>
+                android:text="KEY"
+                android:textColor="@color/mainThemeColor"/>
 
             <View
                 android:layout_width="0dp"
@@ -31,7 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?attr/materialButtonOutlinedStyle"
-                android:text="?"/>
+                android:text="?"
+                android:textColor="@color/mainThemeColor"/>
 
         </LinearLayout>
 
@@ -40,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:text="How do you feel today?"
+            android:textColor="@color/black"
             android:textSize="40dp" />
 
         <com.google.android.material.slider.Slider
@@ -47,10 +50,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:valueFrom="0.0"
-            android:valueTo="5.0"
             android:stepSize="1.0"
             android:value="3.0"
+            android:valueFrom="0.0"
+            android:valueTo="5.0"
+            app:thumbColor="@color/mainThemeColor"
+            app:haloColor="@color/sliderTrackColorShade"
+
+            app:trackColorActive="@color/sliderTrackColor"
+            app:trackColorInactive="@color/sliderTrackColorShade"
+            app:trackHeight="10dp"
+
+            app:tickColorActive="@color/tickColorActive"
+            app:tickColorInactive="@color/tickColorInactive"
             />
 
         <LinearLayout
@@ -62,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="---"
+                android:textColor="@color/mainThemeColor"
                 android:textSize="30dp"/>
 
             <View
@@ -73,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+++"
+                android:textColor="@color/mainThemeColor"
                 android:textSize="30dp"/>
 
         </LinearLayout>
@@ -84,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="Record Mood"
+            app:backgroundTint="@color/mainThemeColor"
             android:layout_gravity="center"/>
 
     </LinearLayout>
