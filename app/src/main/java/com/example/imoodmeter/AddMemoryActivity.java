@@ -33,6 +33,10 @@ public class AddMemoryActivity extends AppCompatActivity implements View.OnClick
             new ActivityResultCallback<Uri>() {
                 @Override
                 public void onActivityResult(Uri uri) {
+                    if (uri == null) {
+                        return;
+                    }
+
                     imageUri = uri;
                     getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
@@ -83,11 +87,9 @@ public class AddMemoryActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void removeAppTitle(){
-        try
-        {
+        try {
             this.getSupportActionBar().hide();
-        }
-        catch (NullPointerException e){}
+        } catch (NullPointerException ignored) {}
     }
 
 }
