@@ -2,6 +2,7 @@ package com.example.imoodmeter.adapter;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imoodmeter.R;
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder> {
     List<MemoryModel> memories = MemoryController.getMemories();
 
@@ -48,7 +51,11 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder
         }
 
         public void setImage(Uri imageUri) {
-            imageView.setImageURI(imageUri);
+            if (imageUri != null) {
+                imageView.setImageURI(imageUri);
+            } else {
+                imageView.setImageDrawable(null);
+            }
         }
 
         @Override
