@@ -8,17 +8,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
         android:orientation="vertical"
         android:gravity="start">
 
         <Button
             android:id="@+id/close_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_gravity="start"
             app:icon="@drawable/close_icon"
             app:iconSize="24dp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            app:iconTint="@color/angry_red"
             />
 
         <ImageView
