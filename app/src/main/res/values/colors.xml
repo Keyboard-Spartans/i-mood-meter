@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="theme_green">#359353</color>
-    <color name="secondary_theme_green">#b3e4c3</color>
+    <color name="secondary_theme_green">#B3E4C3</color>
     <color name="light_grey">#F2F2F2</color>
+    <color name="angry_red">#B20000</color>
 
 </resources>
