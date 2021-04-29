@@ -49,6 +49,8 @@ public class AddMemoryActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        removeAppTitle();
+
         setContentView(R.layout.add_memory);
 
         titleView = findViewById(R.id.title);
@@ -80,5 +82,12 @@ public class AddMemoryActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    public void removeAppTitle(){
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
+    }
 
 }

@@ -14,6 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:gravity="start"
             android:padding="10dp">
@@ -25,6 +26,7 @@
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="10dp"
                 android:text="@string/memory_screen_title"
+                android:textColor="@color/black"
                 android:textAppearance="?attr/textAppearanceHeadline4"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,6 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+
                 app:srcCompat="@drawable/plus_icon"
                 app:fabSize="normal"
                 android:contentDescription="@string/add_memory_button_hint" />

@@ -8,9 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="mainThemeColor">#359353</color>
-    <color name="sliderTrackColor">#b3e4c3</color>
-    <color name="sliderTrackColorShade">#24b3e4c3</color>
-    <color name="tickColorActive">#54359353</color>
-    <color name="tickColorInactive">#30359353</color>
+    <color name="theme_green">#359353</color>
+    <color name="secondary_theme_green">#b3e4c3</color>
+    <color name="light_grey">#F2F2F2</color>
+
 </resources>
