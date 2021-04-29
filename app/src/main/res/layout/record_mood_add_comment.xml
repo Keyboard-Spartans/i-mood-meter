@@ -25,6 +25,11 @@
             android:layout_height="wrap_content"
             android:hint="Description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusBottomEnd="20dp"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -36,16 +41,6 @@
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
-        <!--
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mood_description_edit"
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:inputType="text"
-            android:textColor="#70000000"
-            android:gravity="top"/>
-         -->
 
         <Button
             android:id="@+id/skip_comment"

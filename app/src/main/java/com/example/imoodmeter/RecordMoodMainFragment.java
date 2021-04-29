@@ -1,6 +1,9 @@
 package com.example.imoodmeter;
 
+import android.app.TaskStackBuilder;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;

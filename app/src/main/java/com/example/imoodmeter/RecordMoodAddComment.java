@@ -63,6 +63,9 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
         if (saveComment) {
             TextInputEditText moodDescriptionEdit = findViewById(R.id.mood_description_edit);
             String moodDesc = moodDescriptionEdit.getText().toString();
+            if (moodDesc.isEmpty()) {
+                moodDesc = "No Description";
+            }
 
             moodToAdd = new MoodModel((int) moodVal, moodDesc, timeStamp);
         } else{
