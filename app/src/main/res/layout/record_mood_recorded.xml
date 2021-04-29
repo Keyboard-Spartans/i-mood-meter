@@ -30,12 +30,12 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="!"
+                android:text="Disclaimer"
+                android:textAllCaps="false"
+                android:textSize="12dp"
 
                 app:cornerRadius="30dp"
-                app:rippleColor="@color/sliderTrackColorShade"
-
-                android:textColor="@color/mainThemeColor" />
+                />
 
         </LinearLayout>
 
@@ -88,11 +88,10 @@
             android:textAllCaps="false"
             android:text="Edit"
             android:layout_gravity="center"
-            android:textColor="@color/mainThemeColor"
+            android:textColor="?attr/colorPrimary"
             style="?attr/materialButtonOutlinedStyle"
 
             app:cornerRadius="50dp"
-            app:rippleColor="@color/sliderTrackColorShade"
             />
 
         <Button
@@ -105,7 +104,6 @@
             android:layout_gravity="center"
 
             app:cornerRadius="50dp"
-            app:backgroundTint="@color/mainThemeColor"
             />
 
     </LinearLayout>

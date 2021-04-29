@@ -26,18 +26,7 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // This segment is to remove title bar
-        try
-        {
-            this.getSupportActionBar().hide();
-        }
-        catch (NullPointerException e){}
-
-        // This segment is to change status bar color to our main theme color
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.mainThemeColor)); //status bar or the time bar at the top
-        }
-
+        removeAppTitle();
         setContentView(R.layout.record_mood_add_comment);
 
         Button saveCommentButton = findViewById(R.id.save_comment);
@@ -104,5 +93,13 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
             intent.putExtra("moodRecorded", true);
             startActivity(intent);
         }
+    }
+
+    public void removeAppTitle(){
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
     }
 }

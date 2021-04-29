@@ -88,8 +88,10 @@
             android:layout_margin="5dp"
             android:text="@string/upload_button"
             android:textSize="24sp"
+
             app:icon="@drawable/upload_icon"
             app:iconSize="24dp"
+            app:cornerRadius="50dp"
             style="?attr/materialButtonOutlinedStyle"/>
 
         <Button
@@ -98,7 +100,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="@string/save_button"
-            android:textSize="24sp"/>
+            android:textSize="24sp"
+
+            app:cornerRadius="50dp"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

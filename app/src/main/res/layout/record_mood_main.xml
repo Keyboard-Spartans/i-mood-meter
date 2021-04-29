@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="KEY"
-                android:textColor="@color/mainThemeColor" />
+                android:textColor="@color/colorPrimary" />
                 -->
 
             <View
@@ -33,12 +33,11 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="!"
+                android:text="Disclaimer"
+                android:textAllCaps="false"
+                android:textSize="12dp"
 
-                app:cornerRadius="30dp"
-                app:rippleColor="@color/sliderTrackColorShade"
-
-                android:textColor="@color/mainThemeColor" />
+                app:cornerRadius="30dp" />
 
         </LinearLayout>
 
@@ -59,15 +58,9 @@
             android:value="3.0"
             android:valueFrom="0.0"
             android:valueTo="5.0"
-            app:thumbColor="@color/mainThemeColor"
-            app:haloColor="@color/sliderTrackColorShade"
 
-            app:trackColorActive="@color/sliderTrackColor"
-            app:trackColorInactive="@color/sliderTrackColorShade"
             app:trackHeight="10dp"
 
-            app:tickColorActive="@color/tickColorActive"
-            app:tickColorInactive="@color/tickColorInactive"
             />
 
         <LinearLayout
@@ -79,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":("
-                android:textColor="@color/mainThemeColor"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="30dp"/>
 
             <View
@@ -91,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=":D"
-                android:textColor="@color/mainThemeColor"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="30dp"/>
 
         </LinearLayout>
@@ -107,8 +100,6 @@
             android:textAllCaps="false"
             android:textSize="20dp"
 
-
-            app:backgroundTint="@color/mainThemeColor"
             app:cornerRadius="50dp"
             android:layout_gravity="center"/>
 

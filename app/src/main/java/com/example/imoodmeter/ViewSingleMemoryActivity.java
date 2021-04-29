@@ -1,8 +1,10 @@
 package com.example.imoodmeter;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +16,11 @@ import com.example.imoodmeter.model.MemoryModel;
 
 public class ViewSingleMemoryActivity extends AppCompatActivity implements View.OnClickListener {
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        removeAppTitle();
         setContentView(R.layout.single_memory_detail);
 
         TextView titleView = findViewById(R.id.title);
@@ -36,5 +40,13 @@ public class ViewSingleMemoryActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View v) {
         finish();
+    }
+
+    public void removeAppTitle(){
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
     }
 }
