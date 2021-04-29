@@ -41,12 +41,11 @@ public class MemoryController {
         singletonController = new MemoryController();
 
         // Add some dummy data
-        Uri defaultUri = Uri.parse("android.resource://com.example.imoodmeter/" + R.drawable.upload_icon);
-        singletonController.memories.add(new MemoryModel("Hello world 1", "Lorem ipsum dolor", defaultUri,
+        singletonController.memories.add(new MemoryModel("Hello world 1", "Lorem ipsum dolor", null,
                 LocalDateTime.of(2021, 3, 18, 12, 30)));
-        singletonController.memories.add(new MemoryModel("Hello world 2", "Some other description", defaultUri,
+        singletonController.memories.add(new MemoryModel("Hello world 2", "Some other description", null,
                 LocalDateTime.of(2021, 3, 19, 16, 10)));
-        singletonController.memories.add(new MemoryModel("Hello world 3", "This marks the last!", defaultUri,
+        singletonController.memories.add(new MemoryModel("Hello world 3", "This marks the last!", null,
                 LocalDateTime.of(2021, 3, 20, 8, 50)));
     }
 }
