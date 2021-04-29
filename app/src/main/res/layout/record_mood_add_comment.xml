@@ -25,9 +25,6 @@
             android:layout_height="wrap_content"
             android:hint="Description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-            app:boxStrokeColor="@color/tickColorActive"
-            app:hintTextColor="@color/mainThemeColor"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -36,7 +33,6 @@
                 android:layout_height="170dp"
                 android:gravity="top"
                 android:inputType="text"
-
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -58,11 +54,9 @@
             android:layout_height="60dp"
             android:textAllCaps="false"
             android:text="Skip"
-            android:textColor="@color/mainThemeColor"
             style="?attr/materialButtonOutlinedStyle"
 
             app:cornerRadius="50dp"
-            app:rippleColor="@color/sliderTrackColorShade"
             />
 
         <Button
@@ -74,7 +68,6 @@
             android:text="Save Comment"
 
             app:cornerRadius="50dp"
-            app:backgroundTint="@color/mainThemeColor"
             />
 
     </LinearLayout>
