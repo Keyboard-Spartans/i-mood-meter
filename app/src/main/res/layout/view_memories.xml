@@ -14,42 +14,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:paddingVertical="10dp"
             android:orientation="horizontal"
-            android:gravity="start"
-            android:padding="10dp">
+            android:gravity="start">
 
-            <TextView
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_bar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:text="@string/memory_screen_title"
-                android:textColor="@color/black"
-                android:textAppearance="?attr/textAppearanceHeadline4"/>
+                app:iconifiedByDefault="false"
+                app:queryHint="Search memories"
+                />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_margin="10dp"
 
                 app:srcCompat="@drawable/plus_icon"
                 app:fabSize="normal"
                 android:contentDescription="@string/add_memory_button_hint" />
         </LinearLayout>
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:iconifiedByDefault="false"
-            app:queryHint="Search by title or description"
-            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
