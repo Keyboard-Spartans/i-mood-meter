@@ -45,6 +45,10 @@ public class RecordMoodMainFragment extends Fragment implements View.OnClickList
             }
         });
 
+        // Disclaimer page
+        Button disclaimerButton = view.findViewById(R.id.disclaimer);
+        disclaimerButton.setOnClickListener(this);
+
         // Link to add comment screen
         Button recordButton = view.findViewById(R.id.record_button);
         recordButton.setOnClickListener(this);
@@ -62,6 +66,10 @@ public class RecordMoodMainFragment extends Fragment implements View.OnClickList
 
             Intent intent = new Intent(this.getContext(), RecordMoodAddComment.class);
             intent.putExtra("moodValue", moodVal);
+            startActivity(intent);
+        }
+        if (view.getId() == R.id.disclaimer) {
+            Intent intent = new Intent(this.getContext(), DisclaimerActivity.class);
             startActivity(intent);
         }
     }

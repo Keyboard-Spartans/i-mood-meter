@@ -30,6 +30,7 @@
                 android:layout_weight="1" />
 
             <Button
+                android:id="@+id/disclaimer"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
