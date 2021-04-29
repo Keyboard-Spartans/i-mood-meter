@@ -14,8 +14,6 @@
     <string name="memory_screen_title">Memories</string>
     <string name="image_selected">Image selected:</string>
 
+    <string name="default_description">No Description</string>
 
-    <string name="fa_icon_areachart">&#xf1fe;</string>
-    <string name="fa_icon_piechart">&#xf200;</string>
-    <string name="fa_icon_linechart">&#xf201;</string>
 </resources>

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginHorizontal="20dp">
+        android:layout_marginHorizontal="@dimen/marginHorizontalRecording">
 
         <TextView
             android:id="@+id/text_mood_question"
@@ -26,10 +26,10 @@
             android:hint="Description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusTopStart="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusTopEnd="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusBottomStart="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusBottomEnd="@dimen/cornerRadiusTextBox"
             >
 
             <com.google.android.material.textfield.TextInputEditText
