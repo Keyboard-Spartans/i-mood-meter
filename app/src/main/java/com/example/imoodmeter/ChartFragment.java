@@ -37,47 +37,15 @@ import java.util.List;
 public class ChartFragment extends Fragment {
     LineChart lineChart;
     LineData lineData;
-    List<Entry> entryList = new ArrayList<>();
-
-    // TOD: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-
-    // TOD: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
 
     public ChartFragment() {
         // Required empty public constructor
     }
 
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment ChartFragment.
-//     */
-    // TOD: Rename and change types and number of parameters
-//    public static ChartFragment newInstance(String param1, String param2) {
-//        ChartFragment fragment = new ChartFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -87,11 +55,49 @@ public class ChartFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_chart, container, false);
 
-        lineChart = (LineChart) view.findViewById(R.id.lineChart);
+        lineChart = view.findViewById(R.id.lineChart);
+
         initializeChart(lineChart);
+        List<Entry> entryList = getEntryList();
+
+        LineDataSet lineDataSet = new LineDataSet(entryList,"0: Angry 1:Sad 2:Okay 3:Content 4:Happy 5:Excited");
+        lineDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+        lineDataSet.setFillAlpha(110);
+        lineDataSet.setColors(getResources().getColor(R.color.theme_green));
+        lineDataSet.setLineWidth((float) 800);
+
+        lineData = new LineData(lineDataSet);
+        lineChart.setData(lineData);
+        lineChart.setDrawGridBackground(false);
+        Description labelDesc = new Description();
+        labelDesc.setText("Date");
+        lineChart.setDescription(labelDesc);
+
+        lineChart.invalidate();
+        return view;
+    }
+
+    public void initializeChart(LineChart lineChart) {
+        XAxis xAxis =  lineChart.getXAxis();
+        xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        YAxis yAxis =  lineChart.getAxisLeft();
+        yAxis.setDrawGridLines(false);
+        yAxis.setGranularity(1f);
+        yAxis.setAxisMinimum(0f);
+        yAxis.setAxisMaximum(5f);
+
+        YAxis yAxisR =  lineChart.getAxisRight();
+        yAxisR.setEnabled(false);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public List<Entry> getEntryList() {
+        List<Entry> entryList = new ArrayList<>();
 
         List<MoodModel> moods = MoodController.getMoods();
-
         float prevDay, curDay;
         float cumVal = 0f;
         float cumDays = 1f;
@@ -130,34 +136,6 @@ public class ChartFragment extends Fragment {
             }
         }
 
-        LineDataSet lineDataSet = new LineDataSet(entryList,"Mood");
-        lineDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-        lineDataSet.setFillAlpha(110);
-
-        lineData = new LineData(lineDataSet);
-        lineChart.setData(lineData);
-        lineChart.setDrawGridBackground(false);
-        Description labelDesc = new Description();
-        labelDesc.setText("Date");
-        lineChart.setDescription(labelDesc);
-
-        lineChart.invalidate();
-        return view;
-    }
-
-    public void initializeChart(LineChart lineChart) {
-        XAxis xAxis =  lineChart.getXAxis();
-        xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1f);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-
-        YAxis yAxis =  lineChart.getAxisLeft();
-        yAxis.setDrawGridLines(false);
-        yAxis.setGranularity(1f);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(5f);
-
-        YAxis yAxisR =  lineChart.getAxisRight();
-        yAxisR.setEnabled(false);
+        return entryList;
     }
 }
