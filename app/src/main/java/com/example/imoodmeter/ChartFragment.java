@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,10 +92,12 @@ public class ChartFragment extends Fragment {
 
         List<MoodModel> moods = MoodController.getMoods();
 
-        int i = 0;
         for(MoodModel mood: moods) {
-            entryList.add(new Entry(i,mood.getMoodValue()));
-            i++;
+            LocalDateTime moodTime = mood.getMoodTimeRecorded();
+            BigDecimal xAxisVal = moodTime.getDayOfMonth() + (moodTime.getHour() *3600 + moodTime.getMinute()*60 + moodTime.getSecond())/86400;
+            Log.i("xAxisVal:", String.toString(xAxisVal));
+
+            entryList.add(new Entry(xAxisVal,mood.getMoodValue()));
         }
 
         LineDataSet lineDataSet = new LineDataSet(entryList,"Mood");
@@ -114,11 +119,12 @@ public class ChartFragment extends Fragment {
         XAxis xAxis =  lineChart.getXAxis();
         xAxis.setDrawGridLines(false);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1f);
 
         YAxis yAxis =  lineChart.getAxisLeft();
         yAxis.setDrawGridLines(false);
         yAxis.setGranularity(1f);
+        yAxis.setAxisMinimum(0f);
+        yAxis.setAxisMaximum(5f);
 
         YAxis yAxisR =  lineChart.getAxisRight();
         yAxisR.setEnabled(false);
