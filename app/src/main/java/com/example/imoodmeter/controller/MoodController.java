@@ -60,16 +60,16 @@ public class MoodController {
         singletonController = new MoodController();
 
         // some dummy data
-        LocalDateTime mood1DateTime = singletonController.LocalDateTimeConverter("2021-04-01 11:30");
+        LocalDateTime mood1DateTime = singletonController.LocalDateTimeConverter("2021-04-25 11:30");
         singletonController.moods.add(new MoodModel(1, "I failed my exam", mood1DateTime));
 
-        LocalDateTime mood2DateTime = singletonController.LocalDateTimeConverter("2021-04-02 11:30");
+        LocalDateTime mood2DateTime = singletonController.LocalDateTimeConverter("2021-04-26 11:30");
         singletonController.moods.add(new MoodModel(4, "I talked to an old friend", mood2DateTime));
 
-        LocalDateTime mood3DateTime = singletonController.LocalDateTimeConverter("2021-04-03 18:30");
+        LocalDateTime mood3DateTime = singletonController.LocalDateTimeConverter("2021-04-27 18:30");
         singletonController.moods.add(new MoodModel(3, "I procrastinated the whole day", mood3DateTime));
 
-        LocalDateTime mood4DateTime = singletonController.LocalDateTimeConverter("2021-04-04 11:30");
+        LocalDateTime mood4DateTime = singletonController.LocalDateTimeConverter("2021-04-28 11:30");
         singletonController.moods.add(new MoodModel(5, "I got accepted for a new job", mood4DateTime));
 
 

@@ -1,21 +1,33 @@
 package com.example.imoodmeter;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.imoodmeter.controller.MoodController;
+import com.example.imoodmeter.model.MoodModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 ///**
@@ -69,25 +81,67 @@ public class ChartFragment extends Fragment {
 //        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_chart, container, false);
-        lineChart = (LineChart) view.findViewById(R.id.lineChart);
-        entryList.add(new Entry(10,20));
-        entryList.add(new Entry(5,10));
-        entryList.add(new Entry(7,31));
-        entryList.add(new Entry(3,14));
-        LineDataSet lineDataSet = new LineDataSet(entryList,"Mood");
-        lineDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-        lineDataSet.setFillAlpha(110);
-        lineData = new LineData(lineDataSet);
-        lineChart.setData(lineData);
-        lineChart.setVisibleXRangeMaximum(10);
-        lineChart.invalidate();
-//        return inflater.inflate(R.layout.fragment_chart, container, false);
+
+        GraphView graph = view.findViewById(R.id.graphView);
+        graphInitializer(graph);
+
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(getDataPoint());
+        graph.addSeries(series);
+
         return view;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Date convertToDateViaInstant(LocalDateTime dateToConvert) {
+        return java.util.Date
+                .from(dateToConvert.atZone(ZoneId.systemDefault())
+                        .toInstant());
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private DataPoint[] getDataPoint() {
+        List<MoodModel> moods = MoodController.getMoods();
+
+        DataPoint[] dp = new DataPoint[moods.size()];
+
+        DataPoint oldDp = new DataPoint(convertToDateViaInstant(moods.get(MoodController.getMoodsSize()-1).getMoodTimeRecorded()), moods.get(MoodController.getMoodsSize()-1).getMoodValue());
+
+        for (int i=0; i<moods.size(); i++) {
+
+            DataPoint newDp = new DataPoint(convertToDateViaInstant(moods.get(i).getMoodTimeRecorded()), moods.get(i).getMoodValue());
+
+            if (newDp == oldDp) {
+                Log.e("SAME DATE!", "DETECTED A SAME DATE ON THE ENTRY");
+            }
+
+            dp[i] = newDp;
+
+            oldDp = newDp;
+        }
+        return dp;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void graphInitializer(GraphView graph) {
+        graph.getViewport().setMinX(convertToDateViaInstant(MoodController.getMoods().get(0).getMoodTimeRecorded()).getTime());
+        graph.getViewport().setMaxX(convertToDateViaInstant(MoodController.getMoods().get(MoodController.getMoodsSize()-1).getMoodTimeRecorded()).getTime());
+        graph.getViewport().setXAxisBoundsManual(true);
+
+        graph.getViewport().setMinY(0d);
+        graph.getViewport().setMaxY(0d);
+
+
+
+        graph.getViewport().setScrollable(true); // enables horizontal scrolling
+        graph.getViewport().setScrollableY(true); // enables vertical scrolling
+        graph.getViewport().setScalable(true); // enables horizontal zooming and scrolling
+        graph.getViewport().setScalableY(true); // enables vertical zooming and scrolling
     }
 
 }

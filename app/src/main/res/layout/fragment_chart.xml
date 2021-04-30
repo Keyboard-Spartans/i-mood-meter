@@ -14,10 +14,16 @@
     <!--        android:inputType="textPersonName"-->
     <!--        android:text="Chart Graph Here" />-->
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChart"
+<!--    <com.github.mikephil.charting.charts.LineChart-->
+<!--        android:id="@+id/lineChart"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="430dp"-->
+<!--        android:layout_gravity="center" />-->
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graphView"
         android:layout_width="match_parent"
         android:layout_height="430dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"/>
 
 </FrameLayout>
