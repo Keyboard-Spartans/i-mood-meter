@@ -20,6 +20,7 @@
             android:layout_marginTop="5dp"
             app:icon="@drawable/close_icon"
             app:iconSize="24dp"
+            app:iconTint="@color/angry_red"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             />
 
