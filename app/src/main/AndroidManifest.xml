@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.imoodmeter">
+
     <uses-permission android:name="ANDROID.PERMISSION.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="ANDROID.PERMISSION.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="ANDROID.PERMISSION.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,13 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMoodMeter">
+        <activity android:name=".DisclaimerActivity"></activity>
         <activity android:name=".RecordMoodAddComment" /> <!-- ACTIVITY FOR RECORDING -->
-
         <!-- ACTIVITY FOR MEMORY -->
         <activity android:name=".AddMemoryActivity" />
         <activity android:name=".ViewSingleMemoryActivity" />
         <activity android:name=".ViewMemoriesActivity" /> <!-- ACTIVITY FOR TRACKING -->
-        <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

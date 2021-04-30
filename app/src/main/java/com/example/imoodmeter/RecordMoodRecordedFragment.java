@@ -35,6 +35,10 @@ public class RecordMoodRecordedFragment extends Fragment implements View.OnClick
         float moodVal = MoodController.getMoods().get(MoodController.getMoodsSize()-1).getMoodValue();
         String moodRecapStr = moodUtils.floatToRecapConverter(moodVal);
         moodRecap.setText(moodRecapStr);
+
+        // Disclaimer page
+        Button disclaimerButton = view.findViewById(R.id.disclaimerRecorded);
+        disclaimerButton.setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +46,11 @@ public class RecordMoodRecordedFragment extends Fragment implements View.OnClick
         if (view.getId() == R.id.add_another_mood_button) {
             Intent intent = new Intent(this.getContext(), MainActivity.class);
             intent.putExtra("moodRecorded", false);
+            startActivity(intent);
+        }
+
+        if (view.getId() == R.id.disclaimerRecorded) {
+            Intent intent = new Intent(this.getContext(), DisclaimerActivity.class);
             startActivity(intent);
         }
     }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/text_view_id1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:text="Disclaimer
+" />
+    <TextView
+        android:id="@+id/text_view_id"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_below="@id/text_view_id1"
+        android:textSize="16dp"
+        android:text="This app is NOT designed for medical use. \n\nIf you need urgent mental care, please close\n this app and visit the resources given below:\n\n
+1. National Suicide Prevention\n           Hotline (800-273-8255)\n\n
+2. University of Illinois Student Wellness
+" />
+
+    />
+
+
+
+    <Button
+        android:id = "@+id/confirm_disclaimer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="I Understand"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="70dp"
+        android:layout_below="@id/text_view_id"
+
+        app:cornerRadius="50dp"
+        />
+
+</RelativeLayout>

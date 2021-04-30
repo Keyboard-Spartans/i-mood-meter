@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/marginHorizontalMemory"
         android:orientation="vertical"
         android:gravity="center">
 
@@ -16,8 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_marginTop="5dp"
             app:icon="@drawable/close_icon"
             app:iconSize="24dp"
+            app:iconTint="@color/angry_red"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             />
 
@@ -27,7 +30,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="@string/title"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            app:boxCornerRadiusTopStart="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusTopEnd="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusBottomStart="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusBottomEnd="@dimen/cornerRadiusTextBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -44,7 +53,13 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:hint="@string/description"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            app:boxCornerRadiusTopStart="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusTopEnd="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusBottomStart="@dimen/cornerRadiusTextBox"
+            app:boxCornerRadiusBottomEnd="@dimen/cornerRadiusTextBox"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
