@@ -74,14 +74,15 @@ public class ChartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_chart, container, false);
-        lineChart = (LineChart) view.findViewById(R.id.lineChart);
+        lineChart = view.findViewById(R.id.lineChart);
         entryList.add(new Entry(10,20));
         entryList.add(new Entry(5,10));
         entryList.add(new Entry(7,31));
         entryList.add(new Entry(3,14));
         LineDataSet lineDataSet = new LineDataSet(entryList,"Mood");
-        lineDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+        lineDataSet.setColors(getResources().getColor(R.color.theme_green));
         lineDataSet.setFillAlpha(110);
+        lineDataSet.setLineWidth((float) 400);
         lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
         lineChart.setVisibleXRangeMaximum(10);
