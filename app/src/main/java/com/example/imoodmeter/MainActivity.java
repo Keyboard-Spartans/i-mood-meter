@@ -23,12 +23,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         catch (NullPointerException e){}
 
-
-        // This segment is to change status bar color to our main theme color
-//        if (Build.VERSION.SDK_INT >= 21) {
-//            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.mainThemeColor)); //status bar or the time bar at the top
-//        }
-
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);

@@ -20,6 +20,12 @@ public class MoodController {
 
     private MoodController() {}
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static void setLastMoodEntry(MoodModel newMoodEntry) {
+        initialize();
+        singletonController.moods.set(singletonController.moods.size()-1, newMoodEntry);
+    }
+
     public static int getMoodsSize() {
         return singletonController.moods.size();
     }
