@@ -80,7 +80,7 @@ public class ChartFragment extends Fragment {
 
         lineChart.setDrawBorders(true);
         lineChart.setBorderWidth(2);
-        lineChart.setBorderColor(getResources().getColor(R.color.grey));
+        lineChart.setBorderColor(getResources().getColor(R.color.light_grey));
 
 
         lineChart.invalidate();
