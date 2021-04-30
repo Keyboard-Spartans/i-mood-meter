@@ -1,15 +1,23 @@
 package com.example.imoodmeter;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.imoodmeter.controller.MoodController;
+import com.example.imoodmeter.model.MoodModel;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -69,25 +77,50 @@ public class ChartFragment extends Fragment {
 //        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_chart, container, false);
+
         lineChart = (LineChart) view.findViewById(R.id.lineChart);
-        entryList.add(new Entry(10,20));
-        entryList.add(new Entry(5,10));
-        entryList.add(new Entry(7,31));
-        entryList.add(new Entry(3,14));
+        initializeChart(lineChart);
+
+        List<MoodModel> moods = MoodController.getMoods();
+
+        int i = 0;
+        for(MoodModel mood: moods) {
+            entryList.add(new Entry(i,mood.getMoodValue()));
+            i++;
+        }
+
         LineDataSet lineDataSet = new LineDataSet(entryList,"Mood");
         lineDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         lineDataSet.setFillAlpha(110);
+
         lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
-        lineChart.setVisibleXRangeMaximum(10);
+        lineChart.setDrawGridBackground(false);
+        Description labelDesc = new Description();
+        labelDesc.setText("Date");
+        lineChart.setDescription(labelDesc);
+
         lineChart.invalidate();
-//        return inflater.inflate(R.layout.fragment_chart, container, false);
         return view;
     }
 
+    public void initializeChart(LineChart lineChart) {
+        XAxis xAxis =  lineChart.getXAxis();
+        xAxis.setDrawGridLines(false);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1f);
+
+        YAxis yAxis =  lineChart.getAxisLeft();
+        yAxis.setDrawGridLines(false);
+        yAxis.setGranularity(1f);
+
+        YAxis yAxisR =  lineChart.getAxisRight();
+        yAxisR.setEnabled(false);
+    }
 }
