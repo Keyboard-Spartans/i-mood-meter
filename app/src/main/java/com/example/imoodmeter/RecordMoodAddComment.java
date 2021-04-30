@@ -19,10 +19,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class RecordMoodAddComment extends AppCompatActivity implements View.OnClickListener{
     moodMeterUtils moodUtils = new moodMeterUtils();
+    public static boolean editingMood = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +48,19 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
             TextView textMoodQuestion = findViewById(R.id.text_mood_question);
             textMoodQuestion.setText(moodCommentQuestion);
 
-//            TextInputEditText moodDescriptionEdit = findViewById(R.id.mood_description_edit);
-//            moodDescriptionEdit.setHint(moodEditHint);
+            // fetch value if we're editing
+            boolean editingMood = extras.getBoolean("moodEdit");
+            if (editingMood == true) {
+                RecordMoodAddComment.editingMood = true;
+                Log.w("EDITING MOOD", "inside addComment");
+                List<MoodModel> moods = MoodController.getMoods();
+                MoodModel latestMood = moods.get(moods.size()-1);
+                TextInputEditText moodDescriptionEdit = findViewById(R.id.mood_description_edit);
+
+                moodDescriptionEdit.setText(latestMood.getMoodDescription());
+            }
         }
+
 
 
 
@@ -75,7 +88,15 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
 
         Log.w("ADD_MOOD", moodToAdd.print());
 
-        MoodController.addMood(moodToAdd);
+        // replace last elem if editing
+        if (RecordMoodAddComment.editingMood == true) {
+            Log.i("EDITING_MOOD", "yay");
+            MoodController.setLastMoodEntry(moodToAdd);
+            RecordMoodAddComment.editingMood = false;
+        } else {
+            MoodController.addMood(moodToAdd);
+        }
+
         return;
     }
 
@@ -95,6 +116,7 @@ public class RecordMoodAddComment extends AppCompatActivity implements View.OnCl
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("moodValue", moodVal);
             intent.putExtra("moodRecorded", true);
+            intent.putExtra("moodEdit", false);
             startActivity(intent);
         }
     }

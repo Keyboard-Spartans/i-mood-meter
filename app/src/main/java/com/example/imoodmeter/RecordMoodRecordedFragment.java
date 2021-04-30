@@ -29,6 +29,9 @@ public class RecordMoodRecordedFragment extends Fragment implements View.OnClick
         Button addNewMood = view.findViewById(R.id.add_another_mood_button);
         addNewMood.setOnClickListener(this);
 
+        Button editMood = view.findViewById(R.id.edit_mood_button);
+        editMood.setOnClickListener(this);
+
         // write appropriate mood on recap
         TextView moodRecap = view.findViewById(R.id.mood_recap);
 
@@ -46,6 +49,12 @@ public class RecordMoodRecordedFragment extends Fragment implements View.OnClick
         if (view.getId() == R.id.add_another_mood_button) {
             Intent intent = new Intent(this.getContext(), MainActivity.class);
             intent.putExtra("moodRecorded", false);
+            startActivity(intent);
+        }
+
+        if (view.getId() == R.id.edit_mood_button) {
+            Intent intent = new Intent(this.getContext(), MainActivity.class);
+            intent.putExtra("moodEdit", true);
             startActivity(intent);
         }
 

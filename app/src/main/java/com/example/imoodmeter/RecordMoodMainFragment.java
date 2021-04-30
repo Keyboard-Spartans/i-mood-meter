@@ -4,6 +4,7 @@ import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,13 +12,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.imoodmeter.controller.MoodController;
+import com.example.imoodmeter.model.MoodModel;
 import com.example.imoodmeter.utils.moodMeterUtils;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
+
+import java.util.List;
 
 
 public class RecordMoodMainFragment extends Fragment implements View.OnClickListener{
@@ -27,6 +33,7 @@ public class RecordMoodMainFragment extends Fragment implements View.OnClickList
         super(R.layout.record_mood_main);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
@@ -39,6 +46,20 @@ public class RecordMoodMainFragment extends Fragment implements View.OnClickList
                 return moodUtils.floatToMoodConverter(value);
             }
         });
+
+        // fetch value if we're editing
+        Bundle extras = getActivity().getIntent().getExtras();
+        if(extras != null) {
+            boolean editingMood = extras.getBoolean("moodEdit");
+            if (editingMood == true) {
+                List<MoodModel> moods = MoodController.getMoods();
+                MoodModel latestMood = moods.get(moods.size()-1);
+                slider.setValue(latestMood.getMoodValue());
+
+                Button recordButton = view.findViewById(R.id.record_button);
+                recordButton.setText(moodUtils.floatToRecordButtonConverter(latestMood.getMoodValue()));
+            }
+        }
 
         slider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
@@ -68,6 +89,16 @@ public class RecordMoodMainFragment extends Fragment implements View.OnClickList
             Log.w("MAIN_ACT", "moodVal: " + moodVal);
 
             Intent intent = new Intent(this.getContext(), RecordMoodAddComment.class);
+
+            // set value if we're editing
+            Bundle extras = getActivity().getIntent().getExtras();
+            if(extras != null) {
+                boolean editingMood = extras.getBoolean("moodEdit");
+                if (editingMood == true) {
+                    intent.putExtra("moodEdit", true);
+                }
+            }
+
             intent.putExtra("moodValue", moodVal);
             startActivity(intent);
         }
