@@ -1,5 +1,6 @@
 package com.example.imoodmeter;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,18 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.riontech.calendar.CustomCalendar;
-import com.riontech.calendar.dao.EventData;
-import com.riontech.calendar.dao.dataAboutDate;
-import com.riontech.calendar.utils.CalendarUtils;
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 
 public class CalendarFragment extends Fragment {
 
-    CustomCalendar customCalendar;
 
     public CalendarFragment() {
         // Required empty public constructor
@@ -36,44 +37,41 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         final View view = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        customCalendar = (CustomCalendar) view.findViewById(R.id.customCalendar);
+        final CompactCalendarView compactCalendarView = view.findViewById(R.id.calendar);
+        // Set first day of week to Monday, defaults to Monday so calling setFirstDayOfWeek is not necessary
+        // Use constants provided by Java Calendar class
+        compactCalendarView.setFirstDayOfWeek(Calendar.MONDAY);
 
-        String[] arr = {"2021-04-10", "2021-04-11", "2021-04-15", "2021-04-16", "2021-04-25"};
-        for (int i = 0; i < 2; i++) {
-            int eventCount = 3;
-            customCalendar.addAnEvent(arr[i], eventCount, getEventDataList(eventCount));
-        }
+        // Add event 1 on Sun, 07 Jun 2015 18:20:51 GMT
+        Event ev1 = new Event(Color.GREEN, 1433701251000L, "Some extra data that I want to store.");
+        compactCalendarView.addEvent(ev1);
 
+        // Added event 2 GMT: Sun, 07 Jun 2015 19:10:51 GMT
+        Event ev2 = new Event(Color.GREEN, 1433704251000L);
+        compactCalendarView.addEvent(ev2);
+
+        // Query for events on Sun, 07 Jun 2015 GMT.
+        // Time is not relevant when querying for events, since events are returned by day.
+        // So you can pass in any arbitary DateTime and you will receive all events for that day.
+        List<Event> events = compactCalendarView.getEvents(1433701251000L); // can also take a Date object
+
+        // events has size 2 with the 2 events inserted previously
+
+        // define a listener to receive callbacks when certain events happen.
+        compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                List<Event> events = compactCalendarView.getEvents(dateClicked);
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+            }
+        });
 
         return view;
-    }
-
-
-
-    public ArrayList<EventData> getEventDataList(int count) {
-        ArrayList<EventData> eventDataList = new ArrayList();
-
-        for (int i = 0; i < count; i++) {
-            EventData dateData = new EventData();
-            ArrayList<dataAboutDate> dataAboutDates = new ArrayList();
-
-            dateData.setSection(" ");
-            dataAboutDate dataAboutDate = new dataAboutDate();
-
-            int index = new Random().nextInt(CalendarUtils.getEVENTS().length);
-
-            dataAboutDate.setTitle("Mood Here");
-            dataAboutDate.setSubject("Optional Description From Mood Model Here");
-            dataAboutDates.add(dataAboutDate);
-
-            dateData.setData(dataAboutDates);
-            eventDataList.add(dateData);
-        }
-
-        return eventDataList;
     }
 
 }

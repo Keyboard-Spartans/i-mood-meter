@@ -6,13 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CalendarFragment">
 
-    <com.riontech.calendar.CustomCalendar
-        android:id="@+id/customCalendar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:endMonth="12"
-        app:endYear="2021"
-        app:startMonth="01"
-        app:startYear="2020" />
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/calendar"
+        android:layout_width="fill_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+
+        app:compactCalendarTargetHeight="250dp"
+        app:compactCalendarTextSize="12sp"
+        app:compactCalendarBackgroundColor="?attr/colorPrimary"
+        app:compactCalendarTextColor="#fff"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="?attr/colorSecondary"
+        app:compactCalendarCurrentDayBackgroundColor="?attr/colorSecondary"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        />
 
 </FrameLayout>
