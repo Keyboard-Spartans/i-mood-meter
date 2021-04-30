@@ -29,6 +29,12 @@ public class SummaryActivity extends AppCompatActivity {
 
         viewPager.setAdapter(pagerAdapter);
 
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.setupWithViewPager(viewPager); // this will automatically bind tab clicks to viewpager fragment
+        tabLayout.getTabAt(0).setText("Calendar");
+        tabLayout.getTabAt(1).setText("Chart");
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
