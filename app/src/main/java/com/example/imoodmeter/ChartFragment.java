@@ -92,12 +92,42 @@ public class ChartFragment extends Fragment {
 
         List<MoodModel> moods = MoodController.getMoods();
 
-        for(MoodModel mood: moods) {
-            LocalDateTime moodTime = mood.getMoodTimeRecorded();
-            BigDecimal xAxisVal = moodTime.getDayOfMonth() + (moodTime.getHour() *3600 + moodTime.getMinute()*60 + moodTime.getSecond())/86400;
-            Log.i("xAxisVal:", String.toString(xAxisVal));
+        float prevDay, curDay;
+        float cumVal = 0f;
+        float cumDays = 1f;
 
-            entryList.add(new Entry(xAxisVal,mood.getMoodValue()));
+        for(int i = 1; i < moods.size(); i++) {
+            prevDay = moods.get(i-1).getMoodTimeRecorded().getDayOfMonth();
+            curDay = moods.get(i).getMoodTimeRecorded().getDayOfMonth();
+
+            cumVal += moods.get(i-1).getMoodValue();
+
+            // if not last element
+            if ( i != moods.size()-1){
+                if (curDay == prevDay) {
+                    cumDays ++;
+
+                } else {
+                    entryList.add(new Entry(prevDay,cumVal/cumDays));
+
+                    cumVal = 0f;
+                    cumDays = 1f;
+                }
+            }
+            // if dealing with last element
+            else{
+                if (curDay == prevDay) {
+                    cumDays ++;
+                    cumVal += moods.get(i).getMoodValue();
+                    entryList.add(new Entry(prevDay,cumVal/cumDays));
+
+                } else {
+                    entryList.add(new Entry(prevDay,cumVal/cumDays));
+                    entryList.add(new Entry(curDay, moods.get(i).getMoodValue()));
+                    cumVal = 0f;
+                    cumDays = 1f;
+                }
+            }
         }
 
         LineDataSet lineDataSet = new LineDataSet(entryList,"Mood");
@@ -118,6 +148,7 @@ public class ChartFragment extends Fragment {
     public void initializeChart(LineChart lineChart) {
         XAxis xAxis =  lineChart.getXAxis();
         xAxis.setDrawGridLines(false);
+        xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
         YAxis yAxis =  lineChart.getAxisLeft();
