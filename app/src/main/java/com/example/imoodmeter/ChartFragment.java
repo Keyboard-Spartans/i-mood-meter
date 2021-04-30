@@ -16,6 +16,7 @@ import com.example.imoodmeter.controller.MoodController;
 import com.example.imoodmeter.model.MoodModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -61,17 +62,26 @@ public class ChartFragment extends Fragment {
         List<Entry> entryList = getEntryList();
 
         LineDataSet lineDataSet = new LineDataSet(entryList,"0: Angry 1:Sad 2:Okay 3:Content 4:Happy 5:Excited");
-        lineDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
         lineDataSet.setFillAlpha(110);
         lineDataSet.setColors(getResources().getColor(R.color.theme_green));
         lineDataSet.setLineWidth((float) 800);
+        lineDataSet.setValueTextSize(14f);
+        lineChart.setBackgroundColor(getResources().getColor(R.color.light_grey));
+
 
         lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
         lineChart.setDrawGridBackground(false);
         Description labelDesc = new Description();
-        labelDesc.setText("Date");
+
+        labelDesc.setTextSize(16f);
+        labelDesc.setText("April");
         lineChart.setDescription(labelDesc);
+
+        lineChart.setDrawBorders(true);
+        lineChart.setBorderWidth(2);
+        lineChart.setBorderColor(getResources().getColor(R.color.grey));
+
 
         lineChart.invalidate();
         return view;
@@ -82,12 +92,15 @@ public class ChartFragment extends Fragment {
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextSize(10f);
 
         YAxis yAxis =  lineChart.getAxisLeft();
         yAxis.setDrawGridLines(false);
         yAxis.setGranularity(1f);
         yAxis.setAxisMinimum(0f);
         yAxis.setAxisMaximum(5f);
+        yAxis.setTextSize(10f);
+
 
         YAxis yAxisR =  lineChart.getAxisRight();
         yAxisR.setEnabled(false);
