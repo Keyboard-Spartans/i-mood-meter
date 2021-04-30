@@ -29,7 +29,6 @@ public class SummaryActivityFragment extends Fragment {
         TabItem tabChart = view.findViewById(R.id.tabChart);
 
         ViewPager viewPager = view.findViewById(R.id.ViewPager);
-
         PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
 
         viewPager.setAdapter(pagerAdapter);
@@ -53,7 +52,6 @@ public class SummaryActivityFragment extends Fragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
             }
         });
 
