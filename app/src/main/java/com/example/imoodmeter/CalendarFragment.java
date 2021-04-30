@@ -8,57 +8,72 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CalendarFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.riontech.calendar.CustomCalendar;
+import com.riontech.calendar.dao.EventData;
+import com.riontech.calendar.dao.dataAboutDate;
+import com.riontech.calendar.utils.CalendarUtils;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+
 public class CalendarFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    CustomCalendar customCalendar;
 
     public CalendarFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CalendarFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CalendarFragment newInstance(String param1, String param2) {
-        CalendarFragment fragment = new CalendarFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendar, container, false);
+
+        final View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+
+        customCalendar = (CustomCalendar) view.findViewById(R.id.customCalendar);
+
+        String[] arr = {"2021-04-10", "2021-04-11", "2021-04-15", "2021-04-16", "2021-04-25"};
+        for (int i = 0; i < 2; i++) {
+            int eventCount = 3;
+            customCalendar.addAnEvent(arr[i], eventCount, getEventDataList(eventCount));
+        }
+
+
+        return view;
     }
+
+
+
+    public ArrayList<EventData> getEventDataList(int count) {
+        ArrayList<EventData> eventDataList = new ArrayList();
+
+        for (int i = 0; i < count; i++) {
+            EventData dateData = new EventData();
+            ArrayList<dataAboutDate> dataAboutDates = new ArrayList();
+
+            dateData.setSection(" ");
+            dataAboutDate dataAboutDate = new dataAboutDate();
+
+            int index = new Random().nextInt(CalendarUtils.getEVENTS().length);
+
+            dataAboutDate.setTitle("Mood Here");
+            dataAboutDate.setSubject("Optional Description From Mood Model Here");
+            dataAboutDates.add(dataAboutDate);
+
+            dateData.setData(dataAboutDates);
+            eventDataList.add(dateData);
+        }
+
+        return eventDataList;
+    }
+
 }
