@@ -41,11 +41,11 @@ public class MemoryController {
         singletonController = new MemoryController();
 
         // Add some dummy data
-        singletonController.memories.add(new MemoryModel("Hello world 1", "Lorem ipsum dolor", null,
+        singletonController.memories.add(new MemoryModel("Met my friends today", "Today I met Sophie at Illini Union.", null,
                 LocalDateTime.of(2021, 3, 18, 12, 30)));
-        singletonController.memories.add(new MemoryModel("Hello world 2", "Some other description", null,
+        singletonController.memories.add(new MemoryModel("Aced my exam!", "I aced my ECON 101 exam today! I feel so relieved.", null,
                 LocalDateTime.of(2021, 3, 19, 16, 10)));
-        singletonController.memories.add(new MemoryModel("Hello world 3", "This marks the last!", null,
+        singletonController.memories.add(new MemoryModel("Marzia's Birthday party", "Today is Marzia's birthday and I'm excited to see her at her birthday party!", null,
                 LocalDateTime.of(2021, 3, 20, 8, 50)));
     }
 }

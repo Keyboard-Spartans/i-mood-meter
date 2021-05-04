@@ -61,7 +61,7 @@ public class ChartFragment extends Fragment {
         initializeChart(lineChart);
         List<Entry> entryList = getEntryList();
 
-        LineDataSet lineDataSet = new LineDataSet(entryList,"0: Angry 1:Sad 2:Okay 3:Content 4:Happy 5:Excited");
+        LineDataSet lineDataSet = new LineDataSet(entryList,"Mood Trend");
         lineDataSet.setFillAlpha(110);
         lineDataSet.setColors(getResources().getColor(R.color.theme_green));
         lineDataSet.setLineWidth((float) 800);
@@ -75,7 +75,7 @@ public class ChartFragment extends Fragment {
         Description labelDesc = new Description();
 
         labelDesc.setTextSize(16f);
-        labelDesc.setText("April");
+        labelDesc.setText("May");
         lineChart.setDescription(labelDesc);
 
         lineChart.setDrawBorders(true);
