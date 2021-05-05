@@ -6,15 +6,6 @@
     android:orientation="vertical"
     tools:context=".ChartFragment">
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/editTextTextPersonName"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:ems="10"-->
-    <!--        android:inputType="textPersonName"-->
-    <!--        android:text="Chart Graph Here" />-->
-
     <TextView
         android:layout_marginTop="40dp"
         android:layout_width="wrap_content"
@@ -31,4 +22,12 @@
         android:layout_marginTop="40dp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:text="Legends:\n0: Angry 1:Sad 2:Okay 3:Content 4:Happy 5:Excited"
+        />
 </LinearLayout>
